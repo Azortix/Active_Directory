@@ -16,7 +16,7 @@ A l'étape de Permissions, on vérifie bien que les utilisateurs du domaine aien
 il suffit de faire Customize permissions, puis Add, puis Select a principal pour choisir le groupe ``Domain Users``
 Puis on continue jusqu'à complétion.
 
-### Mise en place du partage des sous dossiers `RH``, ``Comptabilité`` et ``Direction``
+### Mise en place du partage des sous dossiers ``RH``, ``Comptabilité`` et ``Direction``
 Dans le module sur le Server Manager "Files and Storage service", on va créer un nouveau partage via click droit, New Share.  
 On choisit SMB SHare Quick, Next  
 On choisit Type a custom path, puis on entre le path correspondant au dossier voulu : ``RH``  
@@ -31,9 +31,11 @@ On répétera l'action avec ``Comptabilité`` et ``Direction``
 ### COnfiguration du lecteur réseau sur le client
 Il est possible de faire cette étape par ssh (étant donné qu'il s'agit d'une commande powershell), mais dans mon cas, je vais simplement utiliser un client sur le même réseau interne.
 
-New-PSDrive -Name "X" -PSProvider FileSystem -Root "\\SRVWIN\Documents_entreprise\Département" -Persist
+
+On lance la commande suivante sur powershell  
+``New-PSDrive -Name "X" -PSProvider FileSystem -Root "\\SRVWIN\Documents_entreprise\Département" -Persist``  
 Avec X la lettre du lecteur voulu (qui est disponible), SRVWIN étant le nom de la machine Windows Server 2022, et Département étant le nom du dossier
-du département voulu (RH, Comptabilité et Direction).
+du département voulu (RH, Comptabilité et Direction).  
 
 
 ### Vérifications
